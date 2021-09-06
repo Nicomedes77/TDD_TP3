@@ -16,12 +16,8 @@ void LedsInit(uint16_t* direccion){
     *direccion = LEDS_ALL_OFF;
 }
 
-void LedsAllOn(uint16_t* direccion){
-    *direccion = LEDS_ALL_ON;
-}
-
-void LedsAllOff(uint16_t* direccion){
-    *direccion = LEDS_ALL_OFF;
+void SetAllLeds(int leds){
+    *puerto = leds;
 }
 
 void LedsTurnOn(int Led)
@@ -41,10 +37,4 @@ bool verifyOn(int led)
     else false;
 }
 
-bool verifyOff(int led)
-{
-    *puerto = *puerto >> (led-1);
-    if(*puerto == 0) return true;
-    else false;
-}
 

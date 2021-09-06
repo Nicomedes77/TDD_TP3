@@ -62,21 +62,20 @@ void test_verifyLedOff(void)
 {
         const int led = 2;
         bool estado;
-        estado = verifyOff(led);
-        TEST_ASSERT_TRUE(estado);
+        estado = verifyOn(led);
+        TEST_ASSERT_FALSE(estado);
 }
 //-------------------------------------------
 /* Prendo todos los leds en una operación */
 void test_allLedsOn_oneOp(void)
 {
-        LedsAllOn(&puerto);
+        SetAllLeds(0xFFFF);
         TEST_ASSERT_EQUAL_UINT16(0xFFFF,puerto);
 }
 
 /* Apago todos los leds en una operación */
 void test_allLedsOff_oneOp(void)
 {
-        LedsAllOn(&puerto);
-        LedsAllOff(&puerto);
+        SetAllLeds(0x0000);
         TEST_ASSERT_EQUAL_UINT16(0x0000,puerto);
 }
