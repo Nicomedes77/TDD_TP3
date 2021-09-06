@@ -16,6 +16,14 @@ void LedsInit(uint16_t* direccion){
     *direccion = LEDS_ALL_OFF;
 }
 
+void LedsAllOn(uint16_t* direccion){
+    *direccion = LEDS_ALL_ON;
+}
+
+void LedsAllOff(uint16_t* direccion){
+    *direccion = LEDS_ALL_OFF;
+}
+
 void LedsTurnOn(int Led)
 {
     *puerto |= LedsIndexToMask(Led) ;
@@ -25,3 +33,18 @@ void LedsTurnOff(int Led)
 {
     *puerto &= ~LedsIndexToMask(Led) ;
 }
+
+bool verifyOn(int led)
+{
+    *puerto = *puerto >> (led-1);
+    if(*puerto == 1) return true;
+    else false;
+}
+
+bool verifyOff(int led)
+{
+    *puerto = *puerto >> (led-1);
+    if(*puerto == 0) return true;
+    else false;
+}
+
